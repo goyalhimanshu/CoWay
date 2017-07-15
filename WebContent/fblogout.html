@@ -1,0 +1,69 @@
+<script>
+ 
+window.fbAsyncInit = function() {
+	//SDK loaded, initialize it
+	FB.init({
+		appId      : '1626151110972924',
+		xfbml      : true,
+		cookie	   : true,
+		version    : 'v2.2',
+		status     : true
+	});
+ 
+	//check user session and refresh it
+	FB.getLoginStatus(function(response) 
+	{
+		if (response.status === 'connected') {
+			//user is authorized
+			document.getElementById('loginBtn').style.display = 'none';
+			document.getElementById('logoutBtn').style.display = 'block';			
+		} else  if (response.status === 'not_authorized'){
+			//user is not authorized
+			document.getElementById('loginBtn').style.display = 'block';
+			document.getElementById('logoutBtn').style.display = 'none';
+		}else {
+	        // The person is not logged into Facebook, so we're not sure if
+	        // they are logged into this app or not.
+	        document.getElementById('loginBtn').style.display = 'block';
+	        document.getElementById('logoutBtn').style.display = 'none';
+   	    }
+	});
+};
+
+//load the JavaScript SDK
+(function(d, s, id)
+{
+	var js, fjs = d.getElementsByTagName(s)[0];
+	if (d.getElementById(id)) 
+	{
+		return;
+	}
+	js = d.createElement(s); js.id = id;
+	js.src = "//connect.facebook.net/en_US/sdk.js";
+	fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+//Action on logout click
+document.getElementById('logoutBtn').addEventListener('click',
+	//do the logout
+	function()
+	 {
+	 	FB.api('/me/permissions','DELETE',{},function(response) 
+	 	{
+    		  // Insert your code here
+		      if(response.success==true)
+		      {
+		      	document.getElementById('loginBtn').style.display = 'block';
+		      	document.getElementById('logoutBtn').style.display = 'none';
+		      	window.location="logoutAction.jsp";
+		      }
+		      else
+		      {
+		      	document.getElementById('logoutBtn').style.display = 'block';
+		      }
+    	 	  console.log(response.success);
+  		}
+		)
+  	 }, false);
+ 
+</script>

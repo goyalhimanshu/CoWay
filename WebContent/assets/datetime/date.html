@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+<script type="text/javascript" src="assets/datetime/jquery-2.1.0.js"></script>
+<script type="text/javascript" src="assets/datetime/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="assets/datetime/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="assets/datetime/result-light.css">
+<script type="text/javascript" src="assets/datetime/moment.min.js"></script>
+<script type="text/javascript" src="assets/datetime/bootstrap-datetimepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="assets/datetime/bootstrap-datetimepicker.min.css">
+<style type="text/css">
+</style>
+  
+
+
+
+<script type="text/javascript">//<![CDATA[
+$(window).load(function(){
+$('#datetimepicker10').datetimepicker({
+    minDate: moment(),
+    
+    viewMode: 'years',
+    format: 'DD MMM, YYYY'
+});
+});//]]> 
+
+</script>
+
+</head>
+<body>
+  <div class="container">
+           
+            <div class="input-group date" id="datetimepicker10">
+                <input type="text" id="date" name="date" class="form-control" placeholder="DD MMM, YYYY">
+                <span class="input-group-addon"><span class="glyphicon-calendar glyphicon"></span>
+                </span>
+            </div>
+   
+  </div>
+</body>
+</html>
